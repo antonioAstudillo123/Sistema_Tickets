@@ -119,8 +119,6 @@
 
       <script>
         document.getElementById('btnLogout').addEventListener('click' , function(e){
-            e.preventDefault();
-            console.log('entra aqui');
             document.getElementById('formLogout').submit();
         });
       </script>

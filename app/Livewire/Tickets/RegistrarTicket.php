@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Tickets;
 
+use Exception;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use App\Services\Tickets\RegistrarTicket as RegistrarTicketService;
-use Exception;
 
 class RegistrarTicket extends Component
 {
@@ -14,7 +15,7 @@ class RegistrarTicket extends Component
     #[Validate('max:255', message: 'El título no puede ser mayor a 255 caracteres')]
     public $title;
 
-    #[Validate('required', message: 'La descripción es obligatorio')]
+    #[Validate('required', message: 'La descripción es obligatoria')]
     #[Validate('string', message: 'La descripción debe ser una cadena')]
     #[Validate('max:255', message: 'La descripción no puede ser mayor a 500 caracteres')]
     public $description;
@@ -34,7 +35,7 @@ class RegistrarTicket extends Component
     }
 
 
-
+    #[On('save')]
     public function save()
     {
         $this->validate();

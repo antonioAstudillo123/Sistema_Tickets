@@ -102,13 +102,25 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <p class="text-danger font-weight-bold">
-                        Cerrar sesión
-                    </p>
-                </a>
+
+                <form id="formLogout" action="{{ route('logout') }}" method="post">
+                    @csrf
+                        <a id="btnLogout" href="#" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p class="text-danger font-weight-bold">
+                                Cerrar sesión
+                            </p>
+                        </a>
+                </form>
             </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
+
+      <script>
+        document.getElementById('btnLogout').addEventListener('click' , function(e){
+            e.preventDefault();
+            console.log('entra aqui');
+            document.getElementById('formLogout').submit();
+        });
+      </script>

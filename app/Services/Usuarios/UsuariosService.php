@@ -37,5 +37,13 @@ class UsuariosService{
         return $this->repository->updateUser($id , Str::title($name) , $phone , $email , $departamento , $password , $sexo);
     }
 
+    /**
+     * Eliminamos un usuario del sistema
+     */
+
+    public function deleteUser($id){
+        return $this->repository->deleteUser($id);
+    }
+
 
 }

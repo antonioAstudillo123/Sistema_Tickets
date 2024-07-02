@@ -28,12 +28,42 @@ class Usuarios extends Component
     public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo){
 
         try{
+            $data = [];
             $this->service->updateUser($id , $name , $phone , $email , $departamento , $password , $sexo);
+            $data = $this->setResult('Buen trabajo' , 'Usuario actualizado con éxito' , 'success');
         }catch(Exception $e){
-            $this->dispatch('user-update' , ['message' => 'Tuvimos problemas al actualizar el usuario' , 'icon' => 'error']);
+            $data = $this->setResult('Error' , 'Tuvimos problemas al actualizar el usuario' , 'error');
         }
 
-        $this->dispatch('user-update' , ['message' => 'Usuario actualizado con éxito' , 'icon' => 'success']);
+        $this->dispatch('user-update' , ['data' => $data]);
 
+    }
+
+
+
+    public function deleteUser($id)
+    {
+        try{
+            $data = [];
+            $this->service->deleteUser($id);
+            $data = $this->setResult('Buen trabajo' , 'Usuario eliminado con éxito' , 'success');
+
+        }catch(Exception $e){
+            $data = $this->setResult('Error' , $e->getMessage() , 'error');
+        }
+
+        $this->dispatch('user-update' , ['data' => $data]);
+    }
+
+
+    private function setResult($title , $text , $icon)
+    {
+        $data = [];
+
+        $data['icon'] = $icon;
+        $data['title'] = $title;
+        $data['text'] = $text;
+
+        return $data;
     }
 }

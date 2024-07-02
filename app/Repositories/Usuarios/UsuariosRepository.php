@@ -48,4 +48,12 @@ class UsuariosRepository{
 
        return $user->save();
     }
+
+    /**
+     * Eliminamos un usuario del sistema
+     */
+
+    public function deleteUser($id){
+        return User::destroy($id);
+    }
 }

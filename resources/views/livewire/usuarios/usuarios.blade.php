@@ -29,9 +29,7 @@
                                         <i class="fas fa-users-cog"></i>
                                     </button>
                                     <button @click="getDataUser(event)" value="{{ $usuario->id }}" class="btn btn-warning fas fa-edit font-weight-bold" data-bs-toggle="modal" data-bs-target="#modalEditUser"></button>
-                                    <button class="btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    <button x-on:click="$wire.deleteUser({{ $usuario->id }})"  class="btn btn-danger fas fa-trash-alt"></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -97,15 +95,21 @@
 
 
             $wire.on('user-update', (event) => {
+                let result = event[0].data;
+
                 Swal.fire({
-                    title: "Buen trabajo!",
-                    text: event[0].message,
-                    icon: "success"
+                    title: result.title,
+                    text: result.text,
+                    icon: result.icon,
                 }).then(function(){
                     window.location.reload();
                 });
-
             });
+
+
+
+
+
 
     </script>
 @endscript

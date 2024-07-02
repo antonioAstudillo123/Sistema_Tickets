@@ -13,10 +13,6 @@
             </div>
         </form>
 
-
-
-
-
         <div class="card">
             <div class="card-header">
                 <h5>Listado de usuarios</h5>
@@ -35,13 +31,12 @@
                     </thead>
                     <tbody>
                         @if(count($usuarios) === 0)
-                        <tr>
-                            <td colspan="6">
-                                <p class="text-center font-weight-bold">No hay registros que mostrar</p>
-                            </td>
+                            <tr>
+                                <td colspan="6">
+                                    <p class="text-center">No hay registros que mostrar</p>
+                                </td>
 
-                        </tr>
-
+                            </tr>
                         @else
                             @foreach ($usuarios as $usuario )
                                 <tr>

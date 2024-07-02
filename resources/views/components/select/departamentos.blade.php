@@ -7,7 +7,6 @@
             @foreach ($departamentos as $departamento )
                 <option value="{{ $departamento->id }}">{{ $departamento->departamento }}</option>
             @endforeach
-
         </select>
     </div>
 </div>

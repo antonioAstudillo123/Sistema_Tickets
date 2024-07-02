@@ -86,7 +86,7 @@
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="{{ route('usuarios.index') }}" class="nav-link">
+                            <a href="{{ route('perfiles.index') }}" class="nav-link">
                               <i class="far fa-dot-circle nav-icon text-info"></i>
                               <p>Perfiles y permisos</p>
                             </a>

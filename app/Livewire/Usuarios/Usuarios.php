@@ -12,15 +12,26 @@ class Usuarios extends Component
     use WithPagination;
 
     private $service;
+    public $query = "";
 
 
     public function boot(UsuariosService $service){
         $this->service = $service;
     }
 
+    public function updatedQuery(){
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $usuarios = $this->service->allWithDeparment()->paginate(5);
+        if($this->query !== ''){
+            $usuarios = $this->service->filterUsers($this->query)->paginate(5);
+        }else{
+            $usuarios = $this->service->allWithDeparment()->paginate(5);
+        }
+
+
         return view('livewire.usuarios.usuarios' , ['usuarios' => $usuarios ]);
     }
 

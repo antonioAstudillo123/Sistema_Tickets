@@ -46,4 +46,16 @@ class UsuariosService{
     }
 
 
+
+    /**
+     * Obtenemos a los usuarios que cumplan con los criterios de búsqueda ingresado por el usuario
+     *
+     * Retornamos un Builder query
+     */
+
+    public function filterUsers($search){
+        return $this->repository->filterUsers($search);
+    }
+
+
 }

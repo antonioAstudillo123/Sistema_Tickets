@@ -1,5 +1,22 @@
 <div>
     <div class=" p-3" x-data="bodyTable">
+        <form action="" wire:submit="search">
+            <div class="row d-flex justify-content-center mb-3">
+                <div class="col-12 col-lg-6">
+                    <div class="input-group rounded">
+                        <input wire:model.live.debounce.250ms="query" type="search" class="form-control rounded" placeholder="Buscar usuario..." aria-label="Search" aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                          <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
         <div class="card">
             <div class="card-header">
                 <h5>Listado de usuarios</h5>
@@ -17,22 +34,33 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($usuarios as $usuario )
-                            <tr>
-                                <th scope="row">{{ $usuario->id }}</th>
-                                <td>{{ $usuario->name }}</td>
-                                <td>{{ $usuario->email }}</td>
-                                <td>{{ $usuario->phone }}</td>
-                                <td>{{ $usuario->departamento->departamento }}</td>
-                                <td>
-                                    <button class="btn btn-info">
-                                        <i class="fas fa-users-cog"></i>
-                                    </button>
-                                    <button @click="getDataUser(event)" value="{{ $usuario->id }}" class="btn btn-warning fas fa-edit font-weight-bold" data-bs-toggle="modal" data-bs-target="#modalEditUser"></button>
-                                    <button x-on:click="$wire.deleteUser({{ $usuario->id }})"  class="btn btn-danger fas fa-trash-alt"></button>
-                                </td>
-                            </tr>
-                        @endforeach
+                        @if(count($usuarios) === 0)
+                        <tr>
+                            <td colspan="6">
+                                <p class="text-center font-weight-bold">No hay registros que mostrar</p>
+                            </td>
+
+                        </tr>
+
+                        @else
+                            @foreach ($usuarios as $usuario )
+                                <tr>
+                                    <th scope="row">{{ $usuario->id }}</th>
+                                    <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->email }}</td>
+                                    <td>{{ $usuario->phone }}</td>
+                                    <td>{{ $usuario->departamento->departamento }}</td>
+                                    <td>
+                                        <button class="btn btn-info">
+                                            <i class="fas fa-users-cog"></i>
+                                        </button>
+                                        <button @click="getDataUser(event)" value="{{ $usuario->id }}" class="btn btn-warning fas fa-edit font-weight-bold" data-bs-toggle="modal" data-bs-target="#modalEditUser"></button>
+                                        <button x-on:click="$wire.deleteUser({{ $usuario->id }})"  class="btn btn-danger fas fa-trash-alt"></button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+
                     </tbody>
                   </table>
             </div>

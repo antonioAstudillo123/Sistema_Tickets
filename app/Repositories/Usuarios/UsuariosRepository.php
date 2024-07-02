@@ -49,6 +49,21 @@ class UsuariosRepository{
        return $user->save();
     }
 
+
+    /**
+     * Buscamos usuarios que coincidan con el criterio de busqueda
+     *
+     * retornamos un Builder query
+     */
+
+    public function filterUsers($search){
+        return User::where('name' , 'LIKE' , '%' . $search . '%')
+        ->orWhere('email' , 'LIKE' , '%' . $search . '%')
+        ->orWhere('phone' , 'LIKE' , '%' . $search . '%');
+    }
+
+
+
     /**
      * Eliminamos un usuario del sistema
      */
@@ -56,4 +71,7 @@ class UsuariosRepository{
     public function deleteUser($id){
         return User::destroy($id);
     }
+
+
+
 }

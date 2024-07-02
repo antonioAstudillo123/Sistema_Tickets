@@ -80,9 +80,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('usuarios.index') }}" class="nav-link">
                               <i class="far fa-dot-circle nav-icon text-info"></i>
                               <p>Gestión de usuarios</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{ route('usuarios.index') }}" class="nav-link">
+                              <i class="far fa-dot-circle nav-icon text-info"></i>
+                              <p>Perfiles y permisos</p>
                             </a>
                           </li>
                           <li class="nav-item">

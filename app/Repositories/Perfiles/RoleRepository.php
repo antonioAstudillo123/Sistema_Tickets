@@ -15,12 +15,8 @@ class RoleRepository{
         return Role::create(['name' => $perfil]);
     }
 
-    public function getData(int $id){
-        return Role::find($id);
-    }
-
     public function update($id , $perfil){
-        $role = Role::findOrFail($id);
+        $role = $this->find($id);
 
         $role->name = $perfil;
 
@@ -28,7 +24,7 @@ class RoleRepository{
     }
 
     public function delete(int $id){
-        $role = Role::findOrFail($id);
+        $role =  $this->find($id);
 
         return $role->delete();
     }

@@ -31,7 +31,7 @@ class RoleService{
         Obtenemos la información del perfil para poder llenar el modal de edit perfil
     */
     public function getData(int $id){
-        return $this->repositorio->getData($id);
+        return $this->repositorio->find($id);
     }
 
     public function delete(int $id){

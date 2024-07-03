@@ -33,4 +33,13 @@ class RoleRepository{
         return $role->delete();
     }
 
+    /**
+     * Obtenemos un perfil correspondiente a un id
+     */
+
+    public function find($idPerfil)
+    {
+        return Role::findOrFail($idPerfil);
+    }
+
 }

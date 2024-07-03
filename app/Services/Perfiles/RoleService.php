@@ -37,4 +37,19 @@ class RoleService{
     public function delete(int $id){
         return $this->repositorio->delete($id);
     }
+
+
+    /*
+        Este metodo se va a encargar de sincronizarle a un role permisos enviados desde el cliente.
+    */
+    public function addPermissionsToRole($role , $permisos){
+        $role =  $this->repositorio->find($role);
+        return $role->syncPermissions($permisos);
+    }
+
+
+    public function getPermisosRole($perfil){
+        $role = $this->repositorio->find($perfil);
+        return $role->permissions;
+    }
 }

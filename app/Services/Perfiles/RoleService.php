@@ -23,6 +23,7 @@ class RoleService{
         return $this->repositorio->create(Str::ucfirst($perfil));
     }
 
+    //Actualizamos la informacion de un perfil
     public function update($id , $perfil){
         return $this->repositorio->update($id ,Str::ucfirst($perfil));
     }

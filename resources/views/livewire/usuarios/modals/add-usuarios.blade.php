@@ -55,7 +55,7 @@
                             <select x-model="sexo"  class="form-control" name="">
                                 <option disabled selected value="">-- Elige una opción -- </option>
                                 <option value="M"> Masculino</option>
-                                <option  value="F">Femenino </option>
+                                <option value="F">Femenino </option>
                             </select>
                         </div>
                     </div>

@@ -36,11 +36,11 @@ class Usuarios extends Component
     }
 
    // id , nameUser, phone, email, departamento, password
-    public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo){
+    public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo , $perfil){
 
         try{
             $data = [];
-            $this->service->updateUser($id , $name , $phone , $email , $departamento , $password , $sexo);
+            $this->service->updateUser($id , $name , $phone , $email , $departamento , $password , $sexo , $perfil);
             $data = $this->setResult('Buen trabajo' , 'Usuario actualizado con éxito' , 'success');
         }catch(Exception $e){
             $data = $this->setResult('Error' , 'Tuvimos problemas al actualizar el usuario' , 'error');

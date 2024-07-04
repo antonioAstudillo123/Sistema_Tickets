@@ -57,9 +57,18 @@ class UsuariosService{
     /*
         Actualizamos la informacion de un usuario
     */
-    public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo)
+    public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo , $perfil)
     {
-        return $this->repository->updateUser($id , Str::title($name) , $phone , $email , $departamento , $password , $sexo);
+        $roleService = new RoleRepository();
+
+        //Actualizamos la informacion del usuario
+        $this->repository->updateUser($id , Str::title($name) , $phone , $email , $departamento , $password , $sexo);
+
+        $user = $this->repository->getUser($id);
+        $perfil = $roleService->find($perfil);
+
+        //Actualizamos el perfil del usuario
+        return $user->syncRoles([$perfil->name]);
     }
 
     /**

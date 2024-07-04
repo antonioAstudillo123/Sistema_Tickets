@@ -14,7 +14,7 @@
         </form>
 
         <div class="mt-2 mb-2">
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddUser">
+            <button @click="resetAtributos()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddUser">
                 <i class="fas fa-user-plus"></i>
             </button>
         </div>
@@ -52,9 +52,6 @@
                                     <td>{{ $usuario->phone }}</td>
                                     <td>{{ $usuario->departamento->departamento }}</td>
                                     <td>
-                                        <button class="btn btn-info">
-                                            <i class="fas fa-users-cog"></i>
-                                        </button>
                                         <button @click="getDataUser(event)" value="{{ $usuario->id }}" class="btn btn-warning fas fa-edit font-weight-bold" data-bs-toggle="modal" data-bs-target="#modalEditUser"></button>
                                         <button x-on:click="$wire.deleteUser({{ $usuario->id }})"  class="btn btn-danger fas fa-trash-alt"></button>
                                     </td>
@@ -74,7 +71,6 @@
 
         @include('livewire.usuarios.modals.editar-usuarios')
         @include('livewire.usuarios.modals.add-usuarios')
-
     </div>
 </div>
 
@@ -91,7 +87,7 @@
                 password:'',
                 id:'',
                 sexo:'',
-
+                perfil:'',
                 getDataUser(e) {
                     this.modalEdit = true;
                     this.id = e.target.value;
@@ -110,6 +106,7 @@
                     })
                         .then(response => response.json())
                         .then(result =>{
+                            console.log(result);
                             this.modalEdit = false;
                             const data = result.data;
                             const departamento = data.departamento;
@@ -118,9 +115,13 @@
                             this.email = data.email;
                             this.departamento = departamento.id;
                             this.sexo = data.sexo;
+                            this.perfil = data.roles[0].id;
                     } );
-
-                }
+                },
+                resetAtributos(){
+                    this.perfil = '';
+                    this.departamento = '';
+                },
             }));
 
 
@@ -130,7 +131,6 @@
                 phone:'',
                 password:'',
                 sexo:'',
-                perfil:'',
                 createUser()
                 {
                     if(this.nombre === ''){
@@ -147,7 +147,8 @@
                         this.messageAlert('Error' , 'Debe seleccionar un departamento' , 'error');
                     }else if(this.perfil === ''){
                         this.messageAlert('Error' , 'Debe seleccionar un perfil' , 'error');
-                    }else
+                    }
+                    else
                     {
                         const data = {
                             nombre:this.nombre,
@@ -209,11 +210,6 @@
                     window.location.reload();
                 });
             });
-
-
-
-
-
 
     </script>
 @endscript

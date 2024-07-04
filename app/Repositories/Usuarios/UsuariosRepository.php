@@ -26,7 +26,7 @@ class UsuariosRepository{
 
     public function getDataUser(int $id)
     {
-        return User::with('departamento')->findOrFail($id);
+        return User::with(['departamento' , 'roles'])->findOrFail($id);
     }
 
 
@@ -51,15 +51,12 @@ class UsuariosRepository{
 
      }
 
-
-
-
     /**
      * Actualizamos la informacion de un usuario dentro del sistema
      */
 
     public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo){
-        $user = User::findOrFail($id);
+        $user =  $this->getUser($id);
 
         $user->name = $name;
         $user->email = $email;
@@ -96,6 +93,15 @@ class UsuariosRepository{
 
     public function deleteUser($id){
         return User::destroy($id);
+    }
+
+
+    /**
+     * Obtenemos un usuario
+     */
+
+    public function getUser($id){
+        return User::findOrFail($id);
     }
 
 

@@ -70,11 +70,16 @@
                         <x-select.departamentos />
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <x-select.perfiles />
+                    </div>
+                </div>
             </fieldset>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button x-on:click="$wire.updateUser(id , nameUser, phone, email, departamento, password , sexo)" type="button" class="btn btn-primary">Guardar cambios</button>
+          <button x-on:click="$wire.updateUser(id , nameUser, phone, email, departamento, password , sexo , perfil)" type="button" class="btn btn-primary">Guardar cambios</button>
         </div>
       </div>
     </div>

@@ -19,7 +19,8 @@ class Perfiles extends Component
 
     public function render()
     {
-        $perfiles = $this->service->all();
+        $perfiles = $this->service->all()->paginate(3);
+
 
         return view('livewire.perfiles.perfiles' , ['perfiles' => $perfiles]);
     }

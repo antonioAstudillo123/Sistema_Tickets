@@ -12,6 +12,7 @@ Route::prefix('usuarios')->group(function () {
         Route::get('/index' , 'index')->name('usuarios.index');
         Route::get('/usuarios' , 'allWithDeparment');
         Route::post('/getDataUser' , 'getDataUser');
+        Route::post('/create' , 'create');
     });
 });
 

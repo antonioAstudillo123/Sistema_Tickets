@@ -3,6 +3,7 @@
 namespace App\Repositories\Usuarios;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 
 
@@ -11,7 +12,7 @@ class UsuariosRepository{
     /**
      * Obtenemos todos los usuarios con su respectivo departamento
      *
-     * @return User
+     * @return Builder
      */
     public function allWithDeparment(): Builder
     {
@@ -27,6 +28,31 @@ class UsuariosRepository{
     {
         return User::with('departamento')->findOrFail($id);
     }
+
+
+    /**
+     * Creamos un usuario en el modelo User
+     */
+
+     public function createUser(array $data){
+        $user = new User;
+
+        $user->name = Str::title($data['nombre']);
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+        $user->sexo = $data['sexo'];
+        $user->password = $data['password'];
+        $user->departamento_id = $data['departamento'];
+
+        $user->save();
+
+
+        return $user;
+
+     }
+
+
+
 
     /**
      * Actualizamos la informacion de un usuario dentro del sistema

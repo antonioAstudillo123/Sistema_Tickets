@@ -1,5 +1,5 @@
 <div>
-    <div class=" p-3" x-data="bodyTable">
+    <div class="p-3" x-data="bodyTable">
         <form action="" wire:submit="search">
             <div class="row d-flex justify-content-center mb-3">
                 <div class="col-12 col-lg-6">
@@ -12,6 +12,12 @@
                 </div>
             </div>
         </form>
+
+        <div class="mt-2 mb-2">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddUser">
+                <i class="fas fa-user-plus"></i>
+            </button>
+        </div>
 
         <div class="card">
             <div class="card-header">
@@ -67,6 +73,7 @@
         </div>
 
         @include('livewire.usuarios.modals.editar-usuarios')
+        @include('livewire.usuarios.modals.add-usuarios')
 
     </div>
 </div>
@@ -111,10 +118,84 @@
                             this.email = data.email;
                             this.departamento = departamento.id;
                             this.sexo = data.sexo;
-                        } );
+                    } );
 
                 }
             }));
+
+
+            Alpine.data('addUser', () => ({
+                nombre:'',
+                email:'',
+                phone:'',
+                password:'',
+                sexo:'',
+                perfil:'',
+                createUser()
+                {
+                    if(this.nombre === ''){
+                        this.messageAlert('Error' , 'Debe ingresar un nombre' , 'error');
+                    }else if(this.email === ''){
+                        this.messageAlert('Error' , 'Debe ingresar un email' , 'error');
+                    }else if(this.password === ''){
+                        this.messageAlert('Error' , 'Debe ingresar un password' , 'error');
+                    }else if(this.phone === ''){
+                        this.messageAlert('Error' , 'Debe ingresar un phone' , 'error');
+                    }else if(this.sexo === ''){
+                        this.messageAlert('Error' , 'Debe seleccionar un sexo' , 'error');
+                    }else if(this.departamento === ''){
+                        this.messageAlert('Error' , 'Debe seleccionar un departamento' , 'error');
+                    }else if(this.perfil === ''){
+                        this.messageAlert('Error' , 'Debe seleccionar un perfil' , 'error');
+                    }else
+                    {
+                        const data = {
+                            nombre:this.nombre,
+                            email:this.email,
+                            password:this.password,
+                            phone:this.phone,
+                            sexo:this.sexo,
+                            departamento:this.departamento,
+                            perfil:this.perfil
+                        }
+
+                        fetch('create' , {
+                        method:'POST',
+                        headers:{
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        },
+                        body: JSON.stringify(data) ,
+                         })
+                        .then( (response) =>{
+                            if(response.status === 500){
+                                throw new Error('Exception message');
+                            }
+
+                            return response.json();
+                        }
+
+
+                         )
+                        .then(result =>{
+                            this.messageAlert('Buen trabajo' , 'Usuario creado correctamente' , 'success').then(function(){
+                                window.location.reload();
+                            })
+                        })
+                        .catch(function(error){
+                            alert('Error en el sistema');
+                        });
+                    }
+
+                },
+                messageAlert(title , text , icon){
+                    return Swal.fire({
+                        title: title,
+                        text: text,
+                        icon: icon,
+                    });
+                }
+            }))
 
 
             $wire.on('user-update', (event) => {

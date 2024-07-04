@@ -3,6 +3,7 @@
 namespace App\Services\Usuarios;
 
 use Illuminate\Support\Str;
+use App\Repositories\Perfiles\RoleRepository;
 use App\Repositories\Usuarios\UsuariosRepository;
 
 
@@ -27,6 +28,30 @@ class UsuariosService{
     public function getDataUser(int $id){
         return $this->repository->getDataUser($id);
     }
+
+
+    /**
+     * En este método de servicio aparte de crear el usuario en el modelo User,
+     * debemos asignarle el role mediante el modelo Role de la libreria Spatie
+    */
+
+    public function createUser(array $data){
+        $user = $this->repository->createUser($data);
+
+        //Instanciamos clase RoleRepository la cual es la encargada de ejecutar las operaciones a la BD correspondiente a modelo
+        //Role
+
+        $roleService = new RoleRepository();
+
+        //Buscamos el role que queremos asignarle al usuario
+        $role = $roleService->find($data['perfil']);
+
+        return $user->assignRole($role->name);
+
+    }
+
+
+
 
 
     /*

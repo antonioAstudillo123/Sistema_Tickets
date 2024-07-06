@@ -6,7 +6,7 @@ use Exception;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
-use App\Services\Tickets\RegistrarTicket as RegistrarTicketService;
+use App\Services\Tickets\TicketService as RegistrarTicketService;
 
 class RegistrarTicket extends Component
 {

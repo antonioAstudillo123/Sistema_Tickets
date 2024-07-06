@@ -44,7 +44,9 @@ class Usuarios extends Controller
         }catch(Exception $e){
             return response()->json(['message' => $e->getMessage() ] , 500);
         }
+    }
 
-
+    public function prueba(){
+        return $this->service->getUsersSistemas();
     }
 }

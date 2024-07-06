@@ -51,9 +51,6 @@ class UsuariosService{
     }
 
 
-
-
-
     /*
         Actualizamos la informacion de un usuario
     */
@@ -89,6 +86,15 @@ class UsuariosService{
 
     public function filterUsers($search){
         return $this->repository->filterUsers($search);
+    }
+
+
+    /**
+     * Obtenemos todos los usuarios que sean del departamento de sistemas
+     */
+
+    public function getUsersSistemas(){
+        return $this->repository->getUsersSistemas();
     }
 
 

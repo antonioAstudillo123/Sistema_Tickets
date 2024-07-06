@@ -5,18 +5,24 @@ use App\Http\Controllers\Administradores\Perfiles;
 use App\Http\Controllers\Administradores\Permisos;
 use App\Http\Controllers\Administradores\Usuarios;
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function()
+{
     Route::prefix('usuarios')->group(function () {
         Route::controller(Usuarios::class)->group(function(){
             Route::get('/index' , 'index')->name('usuarios.index');
             Route::get('/usuarios' , 'allWithDeparment');
             Route::post('/getDataUser' , 'getDataUser');
             Route::post('/create' , 'create');
+
+            //Ruta de pruena
+            Route::get('/prueba' , 'prueba');
         });
     });
 
-    Route::prefix('perfiles')->group(function(){
-        Route::controller(Perfiles::class)->group(function(){
+    Route::prefix('perfiles')->group(function()
+    {
+        Route::controller(Perfiles::class)->group(function()
+        {
             Route::get('/index' , 'index')->name('perfiles.index');
             Route::post('/getData' ,'getData');
             Route::post('/createPermiso' , 'createPermiso');
@@ -25,7 +31,8 @@ Route::middleware(['auth'])->group(function(){
 
         });
 
-        Route::controller(Permisos::class)->group(function(){
+        Route::controller(Permisos::class)->group(function()
+        {
             Route::post('/update' , 'update');
         });
 

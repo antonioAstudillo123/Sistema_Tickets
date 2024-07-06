@@ -4,9 +4,15 @@ use App\Http\Controllers\Tickets\TicketController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::controller(TicketController::class)->group(function(){
-        Route::get('/ticket' , 'index');
+Route::middleware(['auth'])->group(function ()
+{
+    Route::prefix('tickets')->group(function(){
+        Route::controller(TicketController::class)->group(function()
+        {
+            Route::get('/reportes' , 'index')->name('tickets.index');
+            Route::get('/getTicketsUser', 'getTicketsUser');
+            Route::post('/getDetalleTicket' , 'getDetalleTicket');
+        });
     });
 });
 

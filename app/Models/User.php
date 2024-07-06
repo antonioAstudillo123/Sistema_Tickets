@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Departamentos\DepartamentoModel;
+use App\Models\Tickets\TicketModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -49,9 +50,26 @@ class User extends Authenticatable
     ];
 
 
+    /*
+            Relacionamos un usuario con un departamento
 
+            Un usuario solo puede estar asociado a una departamento
+            El segundo parametro de hasOne es la llave llave foranea del modelo al que estoy relacionando
+            El tercer parametro es la llave local con la cual creo la relacion con mi otro modelo en este caso departamento
+    */
     public function departamento(){
         return $this->hasOne(DepartamentoModel::class , 'id' , 'departamento_id');
+    }
+
+
+
+    /**
+     * Creamos relacion con el modelo tickets
+     * Un usuario puede tener uno o muchos tickets, así que la relación debe ser uno a muchos hasMany
+     */
+
+    public function tickets(){
+        return $this->hasMany(TicketModel::class , 'user_id' , 'id');
     }
 
 

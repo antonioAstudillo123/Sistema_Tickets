@@ -105,5 +105,25 @@ class UsuariosRepository{
     }
 
 
+    /**
+     * Obtenemos todos los usuarios junto con los tickets que han generado
+     */
+
+     public function getUsersWithTickets(){
+        return User::with('tickets');
+     }
+
+
+     /**
+      * Obtenemos todos los usuarios que sean del departamento de sistemas
+      */
+
+      public function getUsersSistemas(){
+        return User::whereHas('departamento' , function(Builder $query){
+            $query->where('departamento' , '=' ,'Sistemas');
+        })
+        ->orderBy('name' , 'asc')
+        ->get();
+      }
 
 }

@@ -13,6 +13,7 @@ Route::middleware(['auth'])->group(function ()
             Route::get('/getTicketsUser', 'getTicketsUser');
             Route::post('/getDetalleTicket' , 'getDetalleTicket');
             Route::post('/updateEstatus' , 'update');
+            Route::get('/createPDF/{id}' , 'createPDF')->name('tickets.pdf');
         });
     });
 });

@@ -6,6 +6,7 @@ use Exception;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Services\Tickets\TicketService;
+use Codedge\Fpdf\Fpdf\Fpdf;
 
 
 class Administrar extends Component
@@ -59,4 +60,5 @@ class Administrar extends Component
         $this->prioridad = "";
         $this->estatusTicket = "";
     }
+
 }

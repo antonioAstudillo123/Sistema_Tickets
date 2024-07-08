@@ -34,7 +34,7 @@ class TicketRepository{
      */
 
      public function updateEstatus($idTicket , $estatus , $comentarios){
-        $ticket = TicketModel::findOrFail($idTicket);
+        $ticket = $this->getTicket($idTicket);
 
         $ticket->estatus = $estatus;
         $ticket->comentarios = $comentarios;
@@ -71,7 +71,7 @@ class TicketRepository{
 
       public function asignar($id_ticket  , $id_user , $prioridad)
       {
-         $ticket = TicketModel::findOrFail($id_ticket);
+         $ticket = $this->getTicket($id_ticket);
          $ticket->priority = $prioridad;
          $ticket->assigned_to = $id_user;
          $ticket->estatus = 'En progreso';
@@ -85,6 +85,15 @@ class TicketRepository{
        */
     public function filterSearch($prioridad , $estatus){
         return TicketModel::where('priority' , $prioridad)->where('estatus' , $estatus);
+    }
+
+    /**
+    * Creamos reporte en pdf sobre el detalle del ticket
+    */
+
+
+    public function getTicket($id){
+        return TicketModel::findOrFail($id);;
     }
 
 }

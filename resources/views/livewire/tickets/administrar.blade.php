@@ -106,8 +106,7 @@
                                     @else
                                         <button value="{{ $ticket->id }}" x-on:click="setEstatusAtributos(event)" class="btn btn-success fas fa-exchange-alt font-weight-bold" data-bs-toggle="modal" data-bs-target="#modalEstatusChange"   data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar estatus de reporte"></button>
                                     @endif
-
-                                    <button  class="btn btn-danger fas fa-file-pdf" data-bs-toggle="tooltip" data-bs-placement="top" title="Generar reporte en PDF"></button>
+                                    <a target="_blank" href="{{ route('tickets.pdf' , ['id' =>  $ticket->id ]) }}" class="btn btn-danger fas fa-file-pdf" data-bs-toggle="tooltip" data-bs-placement="top" title="Generar reporte en PDF"></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -70,6 +70,15 @@ class TicketService{
     }
 
 
+    /*
+        Creamos reporte en PDF
+    */
+
+    public function createPDF($idTicket){
+        return $this->repositorio->getTicketsWithUser($idTicket)->find($idTicket);
+    }
+
+
 
 
 

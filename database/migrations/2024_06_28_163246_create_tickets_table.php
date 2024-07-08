@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('priority')->nullable(); //Baja , Mediana , Alta
+            $table->string('priority')->default('Sin evaluar')->nullable(); //Baja , Mediana , Alta , Sin evaluar
             $table->string('estatus')->default('Abierto'); // Abierto , En progreso , Resuelto , Cancelado
             $table->string('comentarios')->nullable();
             $table->unsignedBigInteger('user_id');

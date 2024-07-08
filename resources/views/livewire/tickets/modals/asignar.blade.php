@@ -7,7 +7,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Asignar el reporte</h5>
         </div>
         <div class="modal-body">
-            <div class="container">
+            <div x-show='boolAsignar' class="container">
                 <div class="mb-3">
                     <x-select.usuarios-sistemas />
                 </div>
@@ -15,9 +15,18 @@
                     <x-select.prioridad />
                 </div>
             </div>
+
+            <div x-show="!boolAsignar" class="container">
+                <div   class="alert alert-warning d-flex align-items-center" role="alert">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div>
+                     Este ticket ya fue asignado!!!
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
-            <button x-on:click="$wire.asignar(id_ticket , user_id , prioridad)" type="button" class="btn btn-primary">Asignar</button>
+            <button x-on:click="$wire.asignar(id_ticket , user_id , prioridad)" x-bind:disabled="!boolAsignar" type="button" class="btn btn-primary">Asignar</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>

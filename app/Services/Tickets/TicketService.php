@@ -4,7 +4,6 @@ namespace App\Services\Tickets;
 
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Tickets\TicketRepository;
-use App\Repositories\Usuarios\UsuariosRepository;
 
 
 class TicketService{
@@ -49,17 +48,31 @@ class TicketService{
      * Asignamos a un usuario del area de sistemas un ticket y le establecemos la prioridad
      */
 
-     public function asignar($id_ticket  , $id_user , $prioridad){
+    public function asignar($id_ticket  , $id_user , $prioridad){
         return $this->repositorio->asignar($id_ticket  , $id_user , $prioridad);
     }
 
 
     /*
-        Obtenemos
+        Actualizamos el estatus, es importante saber el id del ticket y tener los comentarios
     */
-    public function getDetalleTicket($idTicket){
-
+    public function updateEstatus($idTicket , $estatus , $comentarios){
+        return $this->repositorio->updateEstatus($idTicket , $estatus , $comentarios);
     }
+
+
+    /*
+        Filtraremos los ticket dependiendo la opción que el usuario eliga
+        El filtro se realiza por prioridad y estatus
+    */
+    public function filterSearch($prioridad , $estatus){
+        return $this->repositorio->filterSearch($prioridad , $estatus);
+    }
+
+
+
+
+
 
 
 

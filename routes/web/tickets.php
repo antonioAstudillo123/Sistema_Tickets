@@ -12,6 +12,7 @@ Route::middleware(['auth'])->group(function ()
             Route::get('/reportes' , 'index')->name('tickets.index');
             Route::get('/getTicketsUser', 'getTicketsUser');
             Route::post('/getDetalleTicket' , 'getDetalleTicket');
+            Route::post('/updateEstatus' , 'update');
         });
     });
 });

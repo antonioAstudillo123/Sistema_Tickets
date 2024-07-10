@@ -108,4 +108,15 @@ class UsuariosService{
     }
 
 
+
+
+    /**
+     * Obtenemos todos los tickets de un usuario
+     */
+
+     public function getUserTickets($idUser){
+        return $this->repository->getUser($idUser)->tickets();
+     }
+
+
 }

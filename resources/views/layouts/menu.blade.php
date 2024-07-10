@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
+                        <a href="{{ route('usuarios.solicitudes.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon text-primary"></i>
                         <p>Historial de solicitudes</p>
                         </a>

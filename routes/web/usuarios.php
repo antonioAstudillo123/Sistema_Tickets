@@ -5,6 +5,7 @@ use App\Http\Controllers\Usuarios\Configuracion;
 use App\Http\Controllers\Administradores\Perfiles;
 use App\Http\Controllers\Administradores\Permisos;
 use App\Http\Controllers\Administradores\Usuarios;
+use App\Http\Controllers\Usuarios\Solicitudes;
 
 Route::middleware(['auth'])->group(function()
 {
@@ -22,6 +23,11 @@ Route::middleware(['auth'])->group(function()
         //Rutas para trabajar con el submodulo de configuracion cuenta dentro del modulo usuarios
         Route::controller(Configuracion::class)->group(function(){
             Route::get('configuracion/index' , 'index')->name('usuarios.configuracion.index');
+        });
+
+        //Rutas para trabajar con el submodulo de solicitudes dentro del modulo de usuarios
+        Route::controller(Solicitudes::class)->group(function(){
+            Route::get('solicitudes/index' , 'index')->name('usuarios.solicitudes.index');
         });
     });
 

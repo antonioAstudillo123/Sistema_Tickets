@@ -24,7 +24,7 @@
 
                         @if(count($perfiles) === 0)
                             <tr>
-                                <td colspan="3" class="text-center">
+                                <td colspan="5" class="text-center">
                                     No hay registros que mostrar
                                 </td>
                             </tr>

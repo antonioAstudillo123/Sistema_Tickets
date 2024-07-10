@@ -16,6 +16,17 @@ class Administrar extends Component
     public $prioridad;
     public $estatusTicket;
 
+
+
+    public function updatedPrioridad(){
+        $this->resetPage();
+    }
+
+
+    public function updatedEstatusTicket(){
+        $this->resetPage();
+    }
+
     public function boot(TicketService $service){
         $this->service = $service;
     }

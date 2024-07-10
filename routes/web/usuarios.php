@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usuarios\Configuracion;
 use App\Http\Controllers\Administradores\Perfiles;
 use App\Http\Controllers\Administradores\Permisos;
 use App\Http\Controllers\Administradores\Usuarios;
@@ -16,6 +17,11 @@ Route::middleware(['auth'])->group(function()
 
             //Ruta de pruena
             Route::get('/prueba' , 'prueba');
+        });
+
+        //Rutas para trabajar con el submodulo de configuracion cuenta dentro del modulo usuarios
+        Route::controller(Configuracion::class)->group(function(){
+            Route::get('configuracion/index' , 'index')->name('usuarios.configuracion.index');
         });
     });
 
@@ -35,7 +41,6 @@ Route::middleware(['auth'])->group(function()
         {
             Route::post('/update' , 'update');
         });
-
     });
 });
 

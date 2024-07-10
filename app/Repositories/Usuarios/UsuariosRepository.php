@@ -126,4 +126,23 @@ class UsuariosRepository{
         ->get();
       }
 
+
+    /**
+       * Actualizamos la informacion básica de un usuario
+    */
+    public function updateUserBasic($idUser , $name , $email, $password , $phone)
+    {
+        $user = User::findOrFail($idUser);
+
+        $user->name = $name;
+        $user->email = $email;
+        $user->phone = $phone;
+        if($password !== '')
+        {
+            $user->password = $password;
+        }
+
+        return $user->save();
+    }
+
 }

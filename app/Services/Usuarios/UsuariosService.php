@@ -52,7 +52,7 @@ class UsuariosService{
 
 
     /*
-        Actualizamos la informacion de un usuario
+        Actualizamos la informacion de un usuario mediante el modulo de administradores
     */
     public function updateUser($id , $name , $phone , $email , $departamento , $password , $sexo , $perfil)
     {
@@ -95,6 +95,16 @@ class UsuariosService{
 
     public function getUsersSistemas(){
         return $this->repository->getUsersSistemas();
+    }
+
+
+
+    /**
+     * Actualizamos la información básica del usuario, este proceso se hace mediante el modulo de usuarios
+     */
+
+    public function updateUserBasic($idUser , $name , $email, $password , $phone){
+        return $this->repository->updateUserBasic($idUser , Str::title($name) , $email, $password , $phone);
     }
 
 

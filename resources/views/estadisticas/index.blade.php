@@ -5,63 +5,89 @@
 @section('content-main')
 
 <div class="container-fluid p-5">
+
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>{{ $resultado[0]->total }}</h3>
-                    <p>{{ $resultado[0]->estatus }}s</p>
+        @foreach($resultado as $key)
+
+            @switch($key->estatus)
+                @case('Resuelto')
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $key->total }}</h3>
+                                <p>{{ $key->estatus}}s</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @case('En progreso')
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ $key->total }}</h3>
+                                <p>{{ $key->estatus}}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @case('Cancelado')
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>{{ $key->total }}</h3>
+                                <p>{{ $key->estatus}}s</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-window-close"></i>
+                            </div>
+                        </div>
+                    </div>
+                @break
+                @default
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ $key->total }}</h3>
+                                <p>{{ $key->estatus}}s</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                        </div>
+                    </div>
+            @endswitch
+         @endforeach
+
+
+         @if(count($resultado) === 3)
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>0</h3>
+                        <p>Abiertos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
                 </div>
-            <div class="icon">
-                <i class="fas fa-folder-open"></i>
             </div>
-        </div>
-    </div>
 
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-            <div class="inner">
-                <h3>{{ $resultado[3]->total }}</h3>
-                <p>{{ $resultado[3]->estatus }}s</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-thumbs-up"></i>
-            </div>
-        </div>
+         @endif
     </div>
-
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-warning">
-            <div class="inner">
-                <h3>{{ $resultado[2]->total }}</h3>
-                <p>{{ $resultado[2]->estatus }}</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-tasks"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-danger">
-            <div class="inner">
-                <h3>{{ $resultado[1]->total }}</h3>
-                <p>{{ $resultado[1]->estatus }}s</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-window-close"></i>
-            </div>
-        </div>
-    </div>
-          <!-- ./col -->
 
     <div class="container-fluid">
         <div class="row">

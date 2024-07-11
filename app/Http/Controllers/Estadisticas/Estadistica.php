@@ -20,14 +20,9 @@ class Estadistica extends Controller
 
     public function index()
     {
-        // $resultado = DB::table('tickets')->join('users' , 'tickets.assigned_to' , '=' , 'users.id' )->selectRaw('users.name , count(*) as total')->groupBy('tickets.assigned_to')->get();
-
-        // return $resultado;
-
         $resultado = $this->ticketService->all()
         ->selectRaw('estatus, count(*) as total')
         ->groupBy('estatus')
-        ->orderBy('estatus')
         ->get();
 
        return view('estadisticas.index' , ['resultado' => $resultado]);

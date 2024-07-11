@@ -32,3 +32,11 @@
         </div>
     </div>
 </div>
+
+
+@script
+<script>
+    //logica encargada de agregar al menu la clase menu-open
+    document.getElementById('liUsuarios').classList.add('menu-is-opening', 'menu-open');
+</script>
+@endscript

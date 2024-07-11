@@ -54,5 +54,7 @@
         <!-- AdminLTE App -->
         <script src="{{ asset('js/adminlte.js') }}"></script>
 
+        @yield('scriptsPage')
+
     </body>
 </html>

@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\Estadisticas\Estadistica;
-use App\Http\Controllers\Tickets\TicketController;
-use Illuminate\Support\Facades\Route
+use Illuminate\Support\Facades\Route;
 
 
-;
 Route::middleware(['auth'])->group(function ()
 {
     Route::prefix('estadisticas')->group(function(){

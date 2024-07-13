@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Departamentos\DepartamentoModel;
+use App\Models\Inventarios\Equipo;
 use App\Models\Tickets\TicketModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -71,6 +72,15 @@ class User extends Authenticatable
     public function tickets(){
         return $this->hasMany(TicketModel::class , 'user_id' , 'id');
     }
+
+
+    /**
+     * Un usuario tiene un equipo de computo
+     */
+
+     public function equipo(){
+        return $this->hasOne(Equipo::class , 'assigned_user' , 'id');
+     }
 
 
 }

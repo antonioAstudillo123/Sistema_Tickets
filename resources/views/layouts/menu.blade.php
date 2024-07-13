@@ -32,7 +32,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li id="liInventario" class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-server"></i>
                     <p>
@@ -42,21 +42,15 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
+                        <a href="{{ route('inventarios.equipos.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon text-primary"></i>
-                            <p>Inventario de activos</p>
+                            <p>Equipos</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="./index2.html" class="nav-link">
                             <i class="far fa-circle nav-icon text-primary"></i>
                             <p>Mantenimientos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
-                            <i class="far fa-circle nav-icon text-primary"></i>
-                            <p>Historial de cambios</p>
                         </a>
                     </li>
                 </ul>

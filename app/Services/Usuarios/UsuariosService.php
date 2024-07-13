@@ -119,4 +119,11 @@ class UsuariosService{
      }
 
 
+     /**
+      * Obtenemos todos los usuarios del sistema
+      */
+     public function all(){
+        return $this->repository->all();
+     }
+
 }

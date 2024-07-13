@@ -145,6 +145,14 @@ class UsuariosRepository{
         return $user->save();
     }
 
+    /*
+        Obtenemos todos los usuarios del sistema
+    */
+
+    public function all(){
+        return User::all();
+    }
+
 
 
 }

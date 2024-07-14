@@ -5,6 +5,17 @@
 <div>
     <div x-data="equipos" class="p-3">
 
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-12 col-lg-6">
+                <div class="input-group rounded">
+                    <input wire:model.live.debounce.250ms="query" type="search" class="form-control rounded" placeholder="Ingresa el número serial del equipo..." aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex justify-content-between mb-3">
             <button x-on:click="abrirModalAdd" class="btn btn-success fas fa-plus font-weight-bold "></button>
         </div>

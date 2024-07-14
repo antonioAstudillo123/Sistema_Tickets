@@ -59,4 +59,11 @@ class EquipoRepository
         $equipo->assigned_user = null;
         return $equipo->save();
     }
+
+    //Filtramos los equipos mediante número de serial
+    public function searchFilterEquipo($query){
+        return Equipo::where('serial_number', 'like', '%' . $query . '%');
+    }
 }
+
+

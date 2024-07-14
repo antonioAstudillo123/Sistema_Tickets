@@ -1,15 +1,17 @@
 <div>
     <div class="p-3" x-data="bodyTable">
-            <div class="row d-flex justify-content-center mb-3">
-                <div class="col-12 col-lg-6">
-                    <div class="input-group rounded">
-                        <input wire:model.live.debounce.250ms="query" type="search" class="form-control rounded" placeholder="Buscar usuario..." aria-label="Search" aria-describedby="search-addon" />
-                        <span class="input-group-text border-0" id="search-addon">
-                          <i class="fas fa-search"></i>
-                        </span>
-                    </div>
+        {{-- BUSCADOR --}}
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="col-12 col-lg-6">
+                <div class="input-group rounded">
+                    <input wire:model.live.debounce.250ms="query" type="search" class="form-control rounded" placeholder="Buscar usuario..." aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
                 </div>
             </div>
+        </div>
+        {{-- FIN BLOQUE BUSCADOR --}}
         <div class="mt-2 mb-2">
             <button @click="resetAtributos()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddUser">
                 <i class="fas fa-user-plus"></i>

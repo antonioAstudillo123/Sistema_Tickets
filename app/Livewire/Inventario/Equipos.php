@@ -11,6 +11,7 @@ class Equipos extends Component
 {
     use WithPagination;
     private $service;
+    public $query;
 
     //Atributos del modelo Equipo
     public $serial_number;
@@ -30,6 +31,7 @@ class Equipos extends Component
     public $idEquipo;
 
     public function mount(){
+        $this->query = '';
         $this->serial_number = '';
         $this->marca = '';
         $this->modelo = '';
@@ -48,6 +50,9 @@ class Equipos extends Component
     }
 
 
+    public function updatedQuery(){
+        $this->resetPage();
+    }
 
     public function boot(EquipoService $service){
         $this->service = $service;
@@ -55,7 +60,13 @@ class Equipos extends Component
 
     public function render()
     {
-        $equipos = $this->service->all()->paginate(10);
+
+        if($this->query === ''){
+            $equipos = $this->service->all()->paginate(10);
+        }else{
+            $equipos = $this->service->searchFilterEquipo($this->query)->paginate(10);
+        }
+
 
         return view('livewire.inventario.equipos', ['equipos' => $equipos]);
     }

@@ -44,7 +44,14 @@ class EquipoService{
      }
 
 
+     //Le cambiamos a un equipo su estatus en activo y su asignacion en null
      public function resetAsignacionEquipo($idEquipo){
         return $this->repository->resetAsignacionEquipo($idEquipo);
+     }
+
+
+     //Haremos un filtrado de los equipos mediante el número serial que nos ingrese el usuario
+     public function searchFilterEquipo($query){
+        return $this->repository->searchFilterEquipo($query);
      }
 }

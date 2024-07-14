@@ -37,4 +37,14 @@ class EquipoService{
      public function getDetalleEquipo($idEquipo){
         return $this->repository->getDetalleEquipo($idEquipo);
      }
+
+
+     public function getEquipo($idEquipo){
+        return $this->repository->getEquipo($idEquipo);
+     }
+
+
+     public function resetAsignacionEquipo($idEquipo){
+        return $this->repository->resetAsignacionEquipo($idEquipo);
+     }
 }

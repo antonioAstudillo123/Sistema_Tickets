@@ -4,7 +4,6 @@
 namespace App\Repositories\Inventario;
 
 use App\Models\Inventarios\Equipo;
-use Illuminate\Database\Query\Builder;
 
 
 class EquipoRepository
@@ -36,7 +35,7 @@ class EquipoRepository
         $equipo->mac = $data['mac'] ;
         $equipo->ip =  $data['ip'];
         $equipo->notas = $data['notas'];
-        $equipo->estatus = 'En uso';
+        $equipo->estatus =  ($data['idUser'] === null) ? 'Activo':'En uso';
 
         return $equipo->save();
     }
@@ -44,5 +43,20 @@ class EquipoRepository
     //Obtenemos la informacion de un equipo junto con el usuario al que pertenece
     public function getDetalleEquipo($idEquipo){
         return Equipo::with(['user.departamento'])->where('id' , '=' , $idEquipo)->get();
+    }
+
+
+
+    //Obtenemos la informacion de un equipo
+    public function getEquipo($idEquipo){
+        return Equipo::findOrFail($idEquipo);
+    }
+
+    //Formateamos la asignacion del equipo
+    public function resetAsignacionEquipo($idEquipo){
+        $equipo = $this->getEquipo($idEquipo);
+        $equipo->estatus = 'Activo';
+        $equipo->assigned_user = null;
+        return $equipo->save();
     }
 }

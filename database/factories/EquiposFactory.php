@@ -34,7 +34,7 @@ class EquiposFactory extends Factory
             'assigned_user' => User::inRandomOrder()->first(),
             'mac' => fake()->macAddress(),
             'ip' => fake()->ipv4(),
-            'estatus' => 'Activa',
+            'estatus' => 'En uso',
         ];
     }
 }

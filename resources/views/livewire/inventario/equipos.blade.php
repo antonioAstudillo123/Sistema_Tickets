@@ -6,9 +6,8 @@
     <div x-data="equipos" class="p-3">
 
         <div class="d-flex justify-content-between mb-3">
-            <button x-on:click="abrirModalAdd" class="btn btn-success">Agregar</button>
+            <button x-on:click="abrirModalAdd" class="btn btn-success fas fa-plus font-weight-bold "></button>
         </div>
-
 
         <div class="card">
             <div class="card-header">
@@ -40,8 +39,9 @@
                                 <td>{{ $equipo->procesador }}</td>
                                 <td>{{ $equipo->sistema_operativo }}</td>
                                 <td>
-                                    <button x-on:click="detalle(event)" value="{{ $equipo->id }}" data-bs-toggle="modal" data-bs-target="#detalleModal">Detalle</button>
-                                    <button>Editar</button>
+                                    <button data-toggle="tooltip" data-placement="top" title="Visualizar detalle del equipo" class="fas fa-eye btn btn-info font-weight-bold" x-on:click="detalle(event)" value="{{ $equipo->id }}" data-bs-toggle="modal" data-bs-target="#detalleModal"></button>
+                                    <button data-toggle="tooltip" data-placement="top" title="Editar información del equipo" class="fas fa-edit btn btn-warning font-weight-bold" wire:click="setAtributos({{ $equipo->id }})" data-bs-toggle="modal" data-bs-target="#editModal"></button>
+                                    <button wire:click="reasignarEquipo({{ $equipo->id }})" data-toggle="tooltip" data-placement="top" title="Reasignar equipo" class="fas fa-window-restore btn btn-primary font-weight-bold"></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,6 +55,7 @@
 
         @include('livewire.inventario.modals.add')
         @include('livewire.inventario.modals.detalle')
+        @include('livewire.inventario.modals.edit')
     </div>
 </div>
 
@@ -79,6 +80,7 @@
 
             abrirModalAdd() {
                 $('#addEquipoModal').modal('show');
+                document.getElementById('idUser').value = '';
             },
             create(){
                 if(this.serial === ''){
@@ -156,8 +158,6 @@
                 {
                     const data = response.data[0];
 
-                    console.log(data);
-
                     if(data.user === null){
                         document.getElementById('h3UserDetail').textContent = 'No tiene usuario asignado';
                         document.getElementById('pDepartamentoDetail').textContent = 'No tiene usuario asignado';
@@ -179,7 +179,35 @@
         }))
 
 
+    Livewire.on('equipo-update', (event) => {
 
+            $('#editModal').modal('hide');
+
+            Swal.fire({
+                        title: 'Buen trabajo!',
+                        text: 'El equipo fue actualizado correctamente.',
+                        icon: 'success'
+            });
+    });
+
+
+    Livewire.on('equipo-update-error', (event) => {
+
+            Swal.fire({
+                        title: 'Error!',
+                        text: 'No pudimos procesar tu solicitud, error en el sistema.',
+                        icon: 'error'
+            });
+    });
+
+    Livewire.on('equipo-asigned-format', (event) => {
+
+        Swal.fire({
+                    title: 'Buen trabajo!',
+                    text: 'El equipo fue liberado.',
+                    icon: 'success'
+        });
+    });
 
 
     document.getElementById('liInventario').classList.add('menu-is-opening', 'menu-open');

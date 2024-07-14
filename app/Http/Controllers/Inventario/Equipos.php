@@ -20,6 +20,7 @@ class Equipos extends Controller
         return view('inventario.equipos.index');
     }
 
+    //Creamos un nuevo equipo
     public function create(Request $request)
     {
         try{
@@ -32,6 +33,9 @@ class Equipos extends Controller
     }
 
 
+    /*
+        Obtenemos el detalle de la informacion de un equipo de computo, para mostrarlo
+    */
     public function getDetalleEquipo(Request $request){
         return $this->service->getDetalleEquipo($request->input('id'));
     }

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('mac')->nullable();
             $table->string('ip')->nullable();
             $table->text('notas')->nullable();
-            $table->string('estatus');
+            $table->string('estatus'); //En uso, Dañado , En almacen , En mantenimiento , Sin asignar
             $table->timestamps();
             $table->foreign('assigned_user')->references('id')->on('users');
         });

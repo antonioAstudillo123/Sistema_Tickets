@@ -1,6 +1,5 @@
 <div>
     <div class="p-3" x-data="bodyTable">
-        <form action="" wire:submit="search">
             <div class="row d-flex justify-content-center mb-3">
                 <div class="col-12 col-lg-6">
                     <div class="input-group rounded">
@@ -11,8 +10,6 @@
                     </div>
                 </div>
             </div>
-        </form>
-
         <div class="mt-2 mb-2">
             <button @click="resetAtributos()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddUser">
                 <i class="fas fa-user-plus"></i>

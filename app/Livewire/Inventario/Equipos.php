@@ -5,7 +5,6 @@ namespace App\Livewire\Inventario;
 use Exception;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Inventarios\Equipo;
 use App\Services\Inventario\EquipoService;
 
 class Equipos extends Component

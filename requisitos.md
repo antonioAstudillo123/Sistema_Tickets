@@ -12,4 +12,10 @@ Trabajando en el modulo de inventarios submodulo equipos
 - Añadir un buscador donde se pueda filtrar los equipos por numero de serial [x]
 - Al mostrar el detalle del equipo debemos mostrar el usuario al que esta asignado junto con su departamento, modelo, ip y estatus [x]
 - Agregar validación en la cual el número de serial o la IP no esté asignada en otro equipo.[x] 
-- Mostrar en el submodulo de equipos en el select de usuarios, solo aquellos usuarios que no tengan un equipo asignado. 
+- Mostrar en el submodulo de equipos en el select de usuarios, solo aquellos usuarios que no tengan un equipo asignado. [x]
+
+
+
+# Agregar mejorar al modulo de Reportes 
+Al asignar el reporte a un usuario de sistemas, no debo de actualizar la pagina, que todo se haga por medio de 
+reactividad con livewire [x]

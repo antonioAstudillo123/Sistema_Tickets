@@ -207,13 +207,33 @@
 
 
     Livewire.on('ticket-assigned', (event) => {
-        Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-            }).then(function(){
-                window.location.reload();
-            });
+        $('#modalAsignar').modal('hide');
+
+        const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'El reporte fue asignado correctamente'
+                });
+
+
+        // Swal.fire({
+        //     title: "Buen trabajo!",
+        //     text: "El Reporte fue asignado correctamente",
+        //     icon: "success"
+        //     }).then(function(){
+        //         $('#modalAsignar').modal('hide');
+        //     });
        });
 
 </script>

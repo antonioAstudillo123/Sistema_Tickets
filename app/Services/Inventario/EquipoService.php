@@ -60,4 +60,9 @@ class EquipoService{
      public function searchFilterEquipo($query){
         return $this->repository->searchFilterEquipo($query);
      }
+
+
+     public function sinUsuario(){
+        return $this->repository->sinUsuario();
+     }
 }

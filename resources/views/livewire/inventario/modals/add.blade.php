@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="mb-3">
-                        <x-select.usuarios />
+                        <x-select.usuarios-sin-equipo />
                     </div>
                 </div>
             </div>

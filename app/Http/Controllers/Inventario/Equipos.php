@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Inventario;
 
+use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Inventarios\Equipo;
 use App\Http\Controllers\Controller;
 use App\Services\Inventario\EquipoService;
-use Exception;
 
 class Equipos extends Controller
 {
@@ -38,5 +40,24 @@ class Equipos extends Controller
     */
     public function getDetalleEquipo(Request $request){
         return $this->service->getDetalleEquipo($request->input('id'));
+    }
+
+
+
+    public function prueba(){
+
+
+        $assignedUserIds = Equipo::where('assigned_user', '<>', '')
+        ->pluck('assigned_user');
+
+            $usuarios =  User::whereNotIn('id', $assignedUserIds)->get();
+
+
+        foreach ($usuarios as $usuario) {
+            var_dump($usuario);
+        }
+
+        die();
+        return $this->service->sinUsuario();
     }
 }

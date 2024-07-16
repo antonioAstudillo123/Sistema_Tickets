@@ -70,6 +70,12 @@ class EquipoRepository
     public function serialExists($serial){
         return Equipo::where('serial_number' , '=' , $serial)->exists();
     }
+
+
+    //Obtenemos todos los equipos donde el assigned_user sea nulo
+    public function sinUsuario(){
+        return Equipo::where('assigned_user' , null)->get();
+    }
 }
 
 

@@ -4,7 +4,7 @@
 namespace App\Services\Inventario;
 
 use App\Repositories\Inventario\EquipoRepository;
-
+use Exception;
 
 class EquipoService{
     private $repository;
@@ -26,6 +26,12 @@ class EquipoService{
      */
 
     public function create(array $data){
+
+        //Agregamos validación de que si el número seríal ya existe, no permitir crear equipo
+        if($this->repository->serialExists($data['serial'])){
+            throw new Exception('El número serial ya existe.');
+        }
+
         return $this->repository->create($data);
     }
 

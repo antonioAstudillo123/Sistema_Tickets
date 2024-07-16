@@ -64,6 +64,12 @@ class EquipoRepository
     public function searchFilterEquipo($query){
         return Equipo::where('serial_number', 'like', '%' . $query . '%');
     }
+
+
+    //Comprobamos si el número serial existe
+    public function serialExists($serial){
+        return Equipo::where('serial_number' , '=' , $serial)->exists();
+    }
 }
 
 

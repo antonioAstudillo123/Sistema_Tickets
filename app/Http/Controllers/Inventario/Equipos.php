@@ -27,7 +27,7 @@ class Equipos extends Controller
             $this->service->create($request->all());
             return response()->json(['message' => 'Equipo creado correctamente' ] , 200);
         }catch(Exception $e){
-            return response()->json(['message' => 'Tuvimos problemas al crear el registro' . $e->getMessage() ] , 500);
+            return response()->json(['message' => 'Tuvimos problemas al crear el registro. ' . $e->getMessage() ] , 500);
         }
 
     }

@@ -52,7 +52,7 @@
                                 <td>
                                     <button data-toggle="tooltip" data-placement="top" title="Visualizar detalle del equipo" class="fas fa-eye btn btn-info font-weight-bold" x-on:click="detalle(event)" value="{{ $equipo->id }}" data-bs-toggle="modal" data-bs-target="#detalleModal"></button>
                                     <button data-toggle="tooltip" data-placement="top" title="Editar información del equipo" class="fas fa-edit btn btn-warning font-weight-bold" wire:click="setAtributos({{ $equipo->id }})" data-bs-toggle="modal" data-bs-target="#editModal"></button>
-                                    <button wire:click="reasignarEquipo({{ $equipo->id }})" data-toggle="tooltip" data-placement="top" title="Reasignar equipo" class="fas fa-window-restore btn btn-primary font-weight-bold"></button>
+                                    <button wire:click="reasignarEquipo({{ $equipo->id }})" data-toggle="tooltip" data-placement="top" title="Liberar equipo" class="fas fa-window-restore btn btn-primary font-weight-bold"></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -152,8 +152,13 @@
                     });
 
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(function (error)
+                {
+                    Swal.fire({
+                        title: 'Error',
+                        text: error.response.data.message,
+                        icon: 'error'
+                    });
                 });
             },
             detalle(e){

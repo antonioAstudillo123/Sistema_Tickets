@@ -38,8 +38,8 @@
                                     <td>{{ $perfil->created_at }}</td>
                                     <td>
                                         <button value="{{ $perfil->id }}"  x-on:click="getPermisosRole(event)" class="btn btn-info fas fa-info-circle font-weight-bold mr-2" data-toggle="modal" data-target="#detailModalRole"></button>
-                                        <button x-on:click="getPerfilData(event)" class="btn btn-warning fas fa-edit font-weight-bold mr-2" value="{{ $perfil->id }}" data-toggle="modal" data-target="#editModalRole">Editar</button>
-                                        <button x-on:click="$wire.delete({{ $perfil->id }})"  class="btn btn-danger fas fa-trash-alt font-weight-bold text-black">Eliminar</button>
+                                        <button x-on:click="getPerfilData(event)" class="btn btn-warning fas fa-edit font-weight-bold mr-2" value="{{ $perfil->id }}" data-toggle="modal" data-target="#editModalRole"></button>
+                                        <button x-on:click="$wire.delete({{ $perfil->id }})"  class="btn btn-danger fas fa-trash-alt font-weight-bold text-black"></button>
                                     </td>
                                 </tr>
                             @endforeach

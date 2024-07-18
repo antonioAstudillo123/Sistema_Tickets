@@ -28,8 +28,18 @@ reactividad con livewire [x]
 
 Actividades 
 
-Crear Migracion de mantenimientos y relacionarla con la tabla equipos
-Crear modelo mantenimientos y relacionarlo con el modelo mantenimientos
-Crear controlador
-Crear componentes en livewire 
+Crear Migracion de mantenimientos y relacionarla con la tabla equipos [x]
+Crear modelo mantenimientos y relacionarlo con el modelo mantenimientos [x]
+Crear controlador [x]
+Crear componentes en livewire [x]
+
+
+
+# Perfiles y permisos 
+En el sistema van a existir 4 tipos de usuarios: Soporte, Administrativos, Gerencia, Administradores
+
+Los usuarios con perfil de administrativos solo tendran acceso al modulo de usuarios
+Los usuarios con perfil de Administrativos tendran acceso al modulo de usuarios y estadisticas
+Los usuarios con perfil de Soporte, tendrán acceso al modulo de Usuarios, Reportes, Inventario, Estadisticas
+Los usuarios con perfil de Administradores tendran acceso a todos los Modulos
 

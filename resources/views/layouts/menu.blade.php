@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
+                        <a href="{{ route('inventarios.mantenimientos.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon text-primary"></i>
                             <p>Mantenimientos</p>
                         </a>

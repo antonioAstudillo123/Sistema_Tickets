@@ -8,6 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Departamentos\DepartamentoModel;
 use App\Models\Inventarios\Equipo;
+use App\Models\Inventarios\Mantenimientos;
 use App\Models\Tickets\TicketModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -81,6 +82,15 @@ class User extends Authenticatable
      public function equipo(){
         return $this->hasOne(Equipo::class , 'assigned_user' , 'id');
      }
+
+
+
+     /**
+      * A un usuario se le asigna un mantenimiento
+      */
+    public function mantenimientos(){
+        return $this->hasMany(Mantenimientos::class , 'id_user' , 'id');
+    }
 
 
 }

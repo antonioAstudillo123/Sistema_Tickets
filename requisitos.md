@@ -17,5 +17,19 @@ Trabajando en el modulo de inventarios submodulo equipos
 
 
 # Agregar mejorar al modulo de Reportes 
-Al asignar el reporte a un usuario de sistemas, no debo de actualizar la pagina, que todo se haga por medio de 
+- Al asignar el reporte a un usuario de sistemas, no debo de actualizar la pagina, que todo se haga por medio de 
 reactividad con livewire [x]
+
+
+#  Trabajar en el submodulo de mantenimientos 
+
+- Debo ir creando mantenimientos a los cuales se los debo de asignar a un usuario 
+- 
+
+Actividades 
+
+Crear Migracion de mantenimientos y relacionarla con la tabla equipos
+Crear modelo mantenimientos y relacionarlo con el modelo mantenimientos
+Crear controlador
+Crear componentes en livewire 
+

@@ -64,9 +64,9 @@
             </div>
         </div>
 
-        @include('livewire.inventario.modals.add')
-        @include('livewire.inventario.modals.detalle')
-        @include('livewire.inventario.modals.edit')
+        @include('livewire.inventario.modals.equipos.add')
+        @include('livewire.inventario.modals.equipos.detalle')
+        @include('livewire.inventario.modals.equipos.edit')
     </div>
 </div>
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usuarios\Configuracion;
 use App\Http\Controllers\Administradores\Perfiles;
 use App\Http\Controllers\Administradores\Permisos;
+use App\Http\Controllers\Administradores\Respaldos;
 use App\Http\Controllers\Administradores\Usuarios;
 use App\Http\Controllers\Usuarios\Solicitudes;
 
@@ -43,10 +44,22 @@ Route::middleware(['auth'])->group(function()
                 Route::post('/update' , 'update');
             });
         });
+
+
+        Route::prefix('respaldos')->group(function(){
+            Route::controller(Respaldos::class)->group(function(){
+                Route::get('/index' , 'index')->name('respaldos.index');
+            });
+        });
+
+
+
     });
 
-    Route::group(['middleware' => ['permission:Ver modulo usuarios']], function () {
-        Route::prefix('usuarios')->group(function(){
+    Route::group(['middleware' => ['permission:Ver modulo usuarios']], function ()
+    {
+        Route::prefix('usuarios')->group(function()
+        {
             //Rutas para trabajar con el submodulo de configuracion cuenta dentro del modulo usuarios
             Route::controller(Configuracion::class)->group(function()
             {

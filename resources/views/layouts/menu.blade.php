@@ -119,7 +119,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="{{ route('respaldos.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon text-primary"></i>
                             <p>Copias de Seguridad</p>
                             </a>

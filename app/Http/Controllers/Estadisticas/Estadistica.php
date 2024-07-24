@@ -20,12 +20,22 @@ class Estadistica extends Controller
 
     public function index()
     {
-        $resultado = $this->ticketService->all()
+        $estatus = ['Abierto' => 0 , 'En progreso' => 0 , 'Cancelado' => 0 , 'Abierto' => 0 , 'Resuelto' => 0];
+
+        $data = $this->ticketService->all()
         ->selectRaw('estatus, count(*) as total')
         ->groupBy('estatus')
         ->get();
 
-       return view('estadisticas.index' , ['resultado' => $resultado]);
+
+       $data->each(function ($raw) use (&$estatus) {
+            if(isset($estatus[$raw->estatus])){
+                $estatus[$raw->estatus] = $raw->total;
+            }
+        });
+
+
+       return view('estadisticas.index' , ['resultado' => $estatus]);
     }
 
 

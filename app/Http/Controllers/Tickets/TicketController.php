@@ -55,7 +55,7 @@ class TicketController extends Controller
         $fpdf->MultiCell(50, 10, utf8_decode('Título'), 1 , '0' , 'L',  false  );
 
         $fpdf->SetFont('Arial', '', 20);
-        $fpdf->Text(63, 28, utf8_decode($ticket->title),);
+        $fpdf->Text(63, 28, utf8_decode(substr($ticket->title . '...' , 0 , 45) ),);
 
 
 
@@ -77,7 +77,7 @@ class TicketController extends Controller
         $fpdf->MultiCell(50, 10, utf8_decode('Asignado a'), 1 , '0' , 'L',  false  );
 
         $fpdf->SetFont('Arial', '', 20);
-        $fpdf->Text(63, 58, utf8_decode($ticket->assignedUser->name),);
+        $fpdf->Text(63, 58, utf8_decode(  ($ticket->assignedUser === null) ? 'No tiene un usuario asignado' : $ticket->assignedUser->name),);
 
 
 

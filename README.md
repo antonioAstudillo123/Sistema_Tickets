@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Project
+## Sobre el proyecto
 
 Este sistema permitirá a los colaboradores de la empresa registrar incidencias para que el equipo de TI pueda darle seguimiento y resolverlas de manera eficiente.
 

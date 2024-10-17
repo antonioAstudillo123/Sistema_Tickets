@@ -78,22 +78,22 @@
                                 @switch($ticket->estatus)
                                     @case('Abierto')
                                         <td class="">
-                                            <button class="btn btn-primary font-weight-bold shadow rounded-pill">{{ $ticket->estatus }}</button>
+                                            <button class="btn btn-primary btn-sm fas fa-folder-open font-weight-bold shadow rounded-pill "  > <span class="ml-1">{{ $ticket->estatus }} </span></button>
                                         </td>
                                     @break
                                     @case('En progreso')
                                         <td class="">
-                                            <button class="btn btn-warning font-weight-bold shadow rounded-pill">{{ $ticket->estatus }}</button>
+                                            <button class="btn btn-warning btn-sm fas fa-spinner font-weight-bold shadow rounded-pill "  ><span class="ml-1">{{ $ticket->estatus }} </span></button>
                                         </td>
                                     @break
                                     @case('Resuelto')
                                         <td class="">
-                                            <button class="btn btn-success font-weight-bold shadow rounded-pill">{{ $ticket->estatus }}</button>
+                                            <button class="btn btn-success btn-sm fas fa-thumbs-up  font-weight-bold shadow rounded-pill "  ><span class="ml-1">{{ $ticket->estatus }} </span></button>
                                         </td>
                                     @break
                                     @default
                                         <td class="">
-                                            <button class="btn btn-danger font-weight-bold shadow rounded-pill">Cancelado</button>
+                                            <button class="btn btn-danger btn-sm  fas fa-window-close font-weight-bold shadow rounded-pill "  ><span class="ml-1">Cancelado </span></button>
                                         </td>
                                 @endswitch
                                 <td>{{  \Carbon\Carbon::parse($ticket->created_at)->format('d/m/Y - H:i:s') }}</td>

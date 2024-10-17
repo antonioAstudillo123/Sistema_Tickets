@@ -13,7 +13,9 @@ function peticionChartBar(){
     .then(function (response) {
       const departamentos = [];
       const total = [];
-      response.data.data.forEach(element => {
+      const {data:{data}} = response;
+
+      data.forEach(element => {
         departamentos.push(element.departamento);
           total.push(element.total);
       });
@@ -36,7 +38,9 @@ function peticionDonut(){
       .then(function (response) {
         const nombres = [];
         const total = [];
-        response.data.data.forEach(element => {
+        const {data:{data}} = response;
+
+        data.forEach(element => {
             nombres.push(element.name);
             total.push(element.total);
         });
